@@ -57,3 +57,12 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# LIBLINEAR files
+*.class_map
+*.feature_map
+*.model
+liblinear.so.3
+
+# text file
+*.txt
