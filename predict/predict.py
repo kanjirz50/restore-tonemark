@@ -8,21 +8,21 @@ from src.liblinear.liblinearutil import *
 from src.make_feature import *
 from src.train_utils import *
 
-inifile = ConfigParser.SafeConfigParser()
-inifile.read("./config.ini")
-model_dir = inifile.get("settings", "model_dir")
-file_path = set([p.split('.')[0] for p in os.listdir(model_dir)])
-window_size = 2
 
 def main():
+    inifile = ConfigParser.SafeConfigParser()
+    inifile.read("./config.ini")
+    model_dir = inifile.get("settings", "model_dir")
+    file_path = set([p.split('.')[0] for p in os.listdir(model_dir)])
+    window_size = 2
     # test_sentence = 'Toi la sinh vien'
     for line in sys.stdin:
         syllables = line.rstrip().decode('utf-8').split(u' ')
 
-        predicted_syllables = [tone_predict(i, syllables) for i in xrange(len(syllables))]
+        predicted_syllables = [tone_predict(i, syllables, model_dir, file_path, window_size) for i in xrange(len(syllables))]
         print u' '.join(predicted_syllables).encode('utf-8')
 
-def tone_predict(i, syllables):
+def tone_predict(i, syllables, model_dir, file_path, window_size):
     target_syllable = syllables[i]
     target_syllable_lower = syllables[i].lower()
 
