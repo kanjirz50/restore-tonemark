@@ -4,6 +4,8 @@ This is a Vietnamese Diacritics Restoration tool based on SVMs.
 
 ## Usage
 
+"train" and "predict" directory, you should put LIBLINEAR Libary, "liblinear.so.3" under the "src" directory.
+
 ### Train
 
 #### Make corpus
